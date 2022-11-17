@@ -1,2 +1,2 @@
 # Lista-de-tarefas
-Em JS
+Em JS com localStorage
