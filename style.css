@@ -77,10 +77,20 @@ li > input{
     margin-right: 8px;
 }
 
-
 li > .trash {
     float: right;
     padding-top: 8px;
+}
+
+input[type='checkbox']:checked + span{
+    text-decoration: line-through;
+    color: #F28705;
+}
+
+li:hover{
+    cursor: pointer;
+    background: #4e4e4e;
+    transition: all .2s ease;
 }
 
 /* media */
