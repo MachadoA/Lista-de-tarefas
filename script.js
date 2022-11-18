@@ -6,13 +6,13 @@ const taskDescription = document.getElementById('taskDescription');
 const myList = document.getElementById('myList')
 
 
-function createItem(task, status, i) {
+function createItem(task, status, id) {
     const item = document.createElement("li");
     item.classList.add("item")
     item.innerHTML = `
-        <input type="checkbox" ${status} data-indice=${i}>
-        ${task}
-        <input class="trash" type="button" value="🗑️" data-indice=${i}>
+        <input type="checkbox" ${status} id=${id}>
+        <span>${task}</span>
+        <input class="trash" type="button" value="🗑️" id=${id}>
         `;
     document.getElementById("myList").appendChild(item);
 }
@@ -20,7 +20,7 @@ function createItem(task, status, i) {
 function refresh() {
     cleanTasks();
     const items = getItems();
-    items.forEach((item, i) => createItem(item.task, item.status, i));
+    items.forEach((item, id) => createItem(item.task, item.status, id));
 }
 
 function cleanTasks() {
@@ -42,9 +42,9 @@ function addItem(e) {
     }
 }
 
-function removeItem(i) {
+function removeItem(id) {
     const items = getItems();
-    items.splice(i, 1);
+    items.splice(id, 1);    
     setItems(items);
     refresh();
 }
@@ -53,17 +53,17 @@ function removeItem(i) {
 function clickItem(e) {
     const check = e.target;
     if (check.type === 'button') {
-        const i = check.dataset.i;
-        removeItem(i);
+        const id = check.id;
+        removeItem(id);
     } else if (check.type === 'checkbox') {
-        const i = check.dataset.i;
-        update(i);
+        const id = check.id;
+        update(id);
     } 
 }
 
-function update(i) {
+function update(id) {
     const items = getItems();
-    items[i].status = items[i].status === '' ? 'checked' : '';
+    items[id].status = items[id].status === '' ? 'checked' : '';
     setItems(items);
     refresh();
 }
