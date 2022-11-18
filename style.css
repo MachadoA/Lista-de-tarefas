@@ -93,6 +93,10 @@ li:hover{
     transition: all .2s ease;
 }
 
+.trash{
+    background-color: inherit;
+}
+
 /* media */
 @media(max-width:500px){
     section{
